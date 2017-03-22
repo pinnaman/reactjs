@@ -1,0 +1,31 @@
+# create remote repo
+# create local dir
+mkdir <local_dir>
+cd <local_dir>
+git init
+
+# configure local dir
+git config --global user.name 'Ajay'
+git config --global user.email 'user@gmail.com'
+git config --global color.ui 'auto'
+
+git remote add origin https://github.com/user/repo
+git remote -v
+git status
+# Add exclude dirs.
+vi .git/info/exclude 
+
+git status
+git add *
+git status
+git commit -m "reactjs first version"
+# merge read me created on remote repo
+git pull https://github.com/user/repo
+git push origin master
+
+
+# Add a new file to existing repo
+git status 
+git add .
+git commit -m "Add git file"
+git push origin master
