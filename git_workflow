@@ -31,7 +31,14 @@ git commit -m "Add git file"
 git push origin master
 
 # Modify and checkin a file
-
+git checkout master
+git pull
+git ls
+git branch
+git merge master
+git add git_workflow 
+git commit -m "git file changes"
+git push origin master
 
 # Merge master with local branch
 git checkout master
