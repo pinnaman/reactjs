@@ -29,3 +29,16 @@ git status
 git add .
 git commit -m "Add git file"
 git push origin master
+
+# Modify and checkin a file
+
+
+# Merge master with local branch
+git checkout master
+git pull
+git ls
+git checkout download_fix
+git merge master
+git add download.cfc
+git commit -m "download holdings"
+git push -u origin download_fix
