@@ -32,7 +32,7 @@ git push origin master
 
 # Modify and checkin a file
 git checkout master
-git pull
+git pull origin master
 git ls
 git branch
 git merge master
@@ -49,3 +49,52 @@ git merge master
 git add download.cfc
 git commit -m "download holdings"
 git push -u origin download_fix
+
+# Fix remote config issues and checkin directory
+# create remote repo
+# create local dir
+mkdir <local_dir>
+cd <local_dir>
+# pointing to ssh remote with missing ssh keys
+git remote -v
+  origin	git@github.com:pinnaman/linux_desktop.git (fetch)
+  origin	git@github.com:pinnaman/linux_desktop.git (push)
+# remove remote config and add git web remote(https)
+git remote rm origin
+git remote -v
+git remote add origin https://github.com/pinnaman/linux_desktop.git
+git remote -v
+  origin	https://github.com/pinnaman/linux_desktop.git (fetch)
+  origin	https://github.com/pinnaman/linux_desktop.git (push)
+# Still no joy
+git add . && git commit -am "linux desktop first version"
+  On branch master
+  nothing to commit, working directory clean
+git add . && git commit -am "linux desktop first version"
+  On branch linux_desktop
+  nothing to commit, working directory clean
+git add *
+git status
+  On branch linux_desktop
+  nothing to commit, working directory clean
+
+# finally deleting git config and reinitializing fixed the issue.
+rm -rf .git
+git init
+vi .git/config 
+git status
+git remote -v
+git remote add origin https://github.com/pinnaman/linux_desktop.git
+git remote -v
+git status
+git add . && git commit -am "linux desktop first version"
+git status
+# SUCCESS Finally
+git push origin master
+Counting objects: 23, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (21/21), done.
+Writing objects: 100% (23/23), 5.19 MiB | 941.00 KiB/s, done.
+Total 23 (delta 0), reused 0 (delta 0)
+To https://github.com/pinnaman/linux_desktop.git
+ * [new branch]      master -> master
